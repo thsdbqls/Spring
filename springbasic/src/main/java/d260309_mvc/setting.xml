@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Connection, MainDAO, MainService, MainController -->
+<!-- conn=DriverManager.getConnection(url, username, password);  -->
+<!-- Class.forName()함수 bean 생성 -->
+<bean id="loadDriver" class="java.lang.Class" factory-method="forName">
+<constructor-arg value="org.h2.Driver"/>
+</bean>
+
+<bean id="conn" class="java.sql.DriverManager" factory-method="getConnection">
+<constructor-arg value="jdbc:h2:~/test"/>
+<constructor-arg value="sa"/>
+<constructor-arg value=""/>
+</bean>
+
+<bean id="dao" class="d260309_mvc.MainDAO">
+<property name="conn" ref="conn"></property>
+</bean>
+
+<bean id="service" class="d260309_mvc.MainService">
+<property name="dao" ref="dao"></property>
+</bean>
+
+<bean id="controller" class="d260309_mvc.MainController">
+<property name="service" ref="service"></property>
+</bean>
+</beans>

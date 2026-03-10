@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="score" class="d260306_02.Score">
+<constructor-arg value="100"/>
+<constructor-arg value="90"/>
+<constructor-arg value="80"/>
+</bean>
+
+<bean id="student" class="d260306_02.Student">
+<constructor-arg value="102"/>
+<constructor-arg value="hong2"/>
+<constructor-arg ref="score"/>
+</bean>
+
+</beans>
