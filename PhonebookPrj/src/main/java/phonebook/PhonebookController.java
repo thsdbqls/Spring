@@ -2,6 +2,7 @@ package phonebook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,8 +32,22 @@ public class PhonebookController {
 	}
 	
 	// 전체 출력
-	
-	// 선택 출력
+	@RequestMapping("list")
+	public ModelAndView list() {
+		System.out.println("list call");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", service.getPhonebooks());
+		mv.setViewName("views");
+		return mv;
+	}
+	// 선택 출력  /phonebook/view?id=1
+	@RequestMapping("view")
+	public ModelAndView view(int id) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", service.getPhonebook(id));
+		mv.setViewName("view");
+		return mv;
+	}
 	
 	// 수정폼
 	

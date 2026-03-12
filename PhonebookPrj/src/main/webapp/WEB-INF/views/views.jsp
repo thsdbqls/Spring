@@ -1,0 +1,36 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container mt-3">
+<button onclick="location.href='/phonebook/insertform'">전화번호부 입력</button>
+<table class="table table-hover">
+<thead>
+<tr><th>아이디</th><th>이름</th><th>전화번호</th><th>이메일 주소</th></tr>
+</thead>
+<tbody>
+
+<c:forEach var="pb" items="${list}">
+<tr onclick="location.href='/phonebook/view?id=${pb.id}'">
+<td>${pb.id}</td>
+<td>${pb.name}</td>
+<td>${pb.hp}</td>
+<td>${pb.email}</td>
+</tr>
+</c:forEach>
+
+
+</tbody>
+</table>
+</div>
+</body>
+</html>

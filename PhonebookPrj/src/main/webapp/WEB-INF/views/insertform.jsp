@@ -12,36 +12,36 @@
 <form class="form" action="/phonebook/insert" method="post">
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ìì´ë:</lable>
+<lable class="form-label">아이디:</lable>
 <input class="form-control" type="text" name="id" id="id">
 </div>
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ì´ë¦:</lable>
+<lable class="form-label">이름:</lable>
 <input class="form-control" type="text" name="name" id="name">
 </div>
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ì íë²í¸:</lable>
+<lable class="form-label">전화번호:</lable>
 <input class="form-control" type="text" name="hp" id="hp">
 </div>
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ì´ë©ì¼:</lable>
+<lable class="form-label">이메일:</lable>
 <input class="form-control" type="text" name="email" id="email">
 </div>
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ë©ëª¨:</lable>
+<lable class="form-label">메모:</lable>
 <input class="form-control" type="text" name="memo" id="memo">
 </div>
 
 <div class="mb-3 mt-3">
-<lable class="form-label">ì¬ì§íì¼:</lable>
+<lable class="form-label">사진파일:</lable>
 <input class="form-control" type="file" name="pic" id="pic">
 </div>
 
-<input class="btn btn-primary" type="submit" value="ì íë²í¸ë¶ ìë ¥">
+<input class="btn btn-primary" type="submit" value="전화번호부 입력">
 </form>
 </div>
 

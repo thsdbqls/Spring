@@ -12,5 +12,30 @@
 	<property name="suffix" value=".jsp"></property>
 	</bean>
 	
-	<bean id="conn" class="java.lang.DriverManager" factory-method="getConnection"></bean>
+	<!-- <bean id="conn" class="java.lang.DriverManager" factory-method="getConnection"></bean> -->
+	
+	<!-- 
+	<bean id="loadDriver" class="java.lang.Class" factory-method="forName">
+		<constructor-arg value="org.h2.Driver"/>
+	</bean> 
+	-->
+
+	<!-- <bean id="conn" class="java.sql.DriverManager" factory-method="getConnection">
+		<constructor-arg value="jdbc:h2:~/test"/>
+		<constructor-arg value="sa"/>
+		<constructor-arg value=""/>
+	</bean> -->
+	
+	<bean id="driver" class="org.h2.Driver"/>
+
+	<bean id="ds" 
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<constructor-arg ref="driver"/>
+		<constructor-arg value="jdbc:h2:tcp://localhost/~/test"/>
+		<constructor-arg value="sa"/>
+		<constructor-arg value=""/>
+	</bean>
+	
+	<bean id="conn" factory-bean="ds" factory-method="getConnection" />
+	
 </beans>

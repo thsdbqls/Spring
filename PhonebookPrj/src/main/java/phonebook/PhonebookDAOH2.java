@@ -15,23 +15,9 @@ import org.springframework.stereotype.Repository;
 public class PhonebookDAOH2 implements PhonebookDAO{
 	@Autowired
 	Connection conn;
-	
+
 	public PhonebookDAOH2() {
-		
-	}
-	
-	public PhonebookDAOH2(String driver, String url, String username, String password) {
-		// 접속하는 주소가 고정이 아닐 때는 필드 생성자를 활용		
-		try{
-			Class.forName(driver);
-			conn=DriverManager
-					.getConnection(url,username,password);
-			System.out.println(conn);
-		}catch (Exception e) {
-			System.out.println("Connection 객체 생성 오류!!");
-			e.printStackTrace();
-		}
-		
+		System.out.println("dao:"+conn);
 	}
 	
 	@Override
@@ -56,12 +42,14 @@ public class PhonebookDAOH2 implements PhonebookDAO{
 
 	@Override
 	public List<PhonebookVO> findAll() {
+		System.out.println("dao:"+conn);
 		String sql="select * from phonebook"; 
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 			List<PhonebookVO> list=new ArrayList<PhonebookVO>();
 			while(rs.next()) {
+				/*
 				PhonebookVO pb=new PhonebookVO(
 						rs.getInt("id"),
 						rs.getString("name"), 
@@ -69,6 +57,16 @@ public class PhonebookDAOH2 implements PhonebookDAO{
 						rs.getString("email"), 
 						rs.getString("memo")
 						);
+				*/
+				// 위의 생성자를 builder를 이용하여 처리한다
+				PhonebookVO pb = PhonebookVO.builder()
+						.id(rs.getInt("id"))
+						.name(rs.getString("name"))
+						.hp(rs.getString("hp"))
+						.email(rs.getString("email"))
+						.memo(rs.getString("memo"))
+						.pic(rs.getString("pic"))
+						.build();
 				list.add(pb);				
 			}
 			rs.close();ps.close();
