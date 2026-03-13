@@ -1,5 +1,20 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<c:choose>
+        <c:when test="${kind eq 'update'}">
+            <c:if test="${message eq 'success'}">
+            <script>alert("수정 성공!!")</script>
+            </c:if>
+            <c:if test="${message ne 'success'}">
+            <script>alert("수정 실패!!")</script>
+            </c:if>
+        </c:when>
+        
+        <c:otherwise></c:otherwise>
+</c:choose>
+    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -73,19 +88,15 @@
 </head>
 <body>
 
-${pb}
     <div class="container">
         <h1>상세보기</h1>
         <div class="detail">
         	<div>
-        	<c:forEach var="pb" items="${list}">
-        	${pb}
-			</c:forEach>
         		<!-- 만약에 사진이 있으면 사진을 나타내고 없으면 기본이미지 적용 -->
         		<c:if test="${not empty pb.pic}">
-        		
         		<img src="/fileupload/${pb.pic}" alt="image" width="100px">
         		</c:if>
+        		
         		<c:if test="${empty pb.pic}">
         		<img src="/fileupload/default.png" alt="image" width="100px">
         		</c:if>
@@ -111,7 +122,7 @@ ${pb}
                 <span class="note">${pb.memo}</span>
             </div>
         </div>
-        <a href="/phonebook/views" class="back-button">뒤로가기</a>
+        <a href="/phonebook/list" class="back-button">뒤로가기</a>
         <a href="/phonebook/updateform?id=${pb.id}" class="back-button">수정</a>
         <a href="javascript:deleteconfirm('${pb.id}')" class="back-button">삭제</a>
     </div>

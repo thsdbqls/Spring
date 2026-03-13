@@ -17,8 +17,8 @@ public class PhonebookService {
 		return dao.findAll();
 	}
 	
-	public boolean insert(int id, String name, String hp, String email, String memo,String pic) {
-		PhonebookVO pb=new PhonebookVO(id, name, hp, email, memo, pic);
+	public boolean insert(PhonebookVO pb) {
+		//PhonebookVO pb=new PhonebookVO(id, name, hp, email, memo, pic);
 		int result=dao.save(pb);
 		if(result>0) return true;
 		else return false;
@@ -26,5 +26,15 @@ public class PhonebookService {
 	public PhonebookVO getPhonebook(int id) {
 		return dao.findById(id);
 	}
+
+	public boolean update(PhonebookVO pb) {
+		return dao.update(pb)>0 ? true : false;
+	}
+	
+	public boolean delete(int id) {
+		 return dao.delete(id) >0 ? true : false;
+		
+	}
+
 
 }

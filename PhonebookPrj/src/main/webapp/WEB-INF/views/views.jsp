@@ -2,6 +2,21 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<c:choose>
+        <c:when test="${kind eq 'insert'}">
+            <c:if test="${message eq 'success'}">
+            <script>alert("입력 성공!!")</script>
+            </c:if>
+            <c:if test="${message ne 'success'}">
+            <script>alert("입력 실패!!")</script>
+            </c:if>
+        </c:when>
+        
+        <c:otherwise></c:otherwise>
+</c:choose>
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>

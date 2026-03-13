@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 @org.springframework.stereotype.Controller
-@RequestMapping
+@RequestMapping("/")
 public class MainController  {
 
 	@RequestMapping("")
